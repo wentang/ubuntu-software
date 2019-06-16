@@ -1,3 +1,5 @@
+build/
+
 *.bz2
 *.gz
 *.xz
