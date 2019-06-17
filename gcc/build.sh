@@ -21,29 +21,31 @@ function check_result {
 VER=9.1.0
 SUFFIX=-last
 
-# decompress source
-SRC_PATH=${SCRIPT_PATH}/gcc-${VER}
-if [ -d ${SRC_PATH} ]; then
-    rm -rf ${SRC_PATH}
-fi
-tar xvf gcc-${VER}.tar.xz
-
-tar xvf gmp-6.1.0.tar.bz2
-mv gmp-6.1.0 gcc-${VER}/gmp
-
-tar xvf mpc-1.0.3.tar.gz
-mv mpc-1.0.3 gcc-${VER}/mpc
-
-tar xvf mpfr-3.1.4.tar.bz2
-mv mpfr-3.1.4 gcc-${VER}/mpfr
-
-# tar xvf isl-0.18.tar.bz2
-# mv isl-0.18 gcc-${VER}/isl
-
 # prepare build path
 if [ -d ${BUILD_PATH} ]; then
     rm -rf ${BUILD_PATH}
 fi
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
+
+# decompress source
+SRC_PATH=${BUILD_PATH}/gcc-${VER}
+
+tar xvf ${SCRIPT_PATH}/gcc-${VER}.tar.xz
+
+tar xvf ${SCRIPT_PATH}/gmp-6.1.0.tar.bz2
+mv gmp-6.1.0 ${SRC_PATH}/gmp
+
+tar xvf ${SCRIPT_PATH}/mpc-1.0.3.tar.gz
+mv mpc-1.0.3 ${SRC_PATH}/mpc
+
+tar xvf ${SCRIPT_PATH}/mpfr-3.1.4.tar.bz2
+mv mpfr-3.1.4 ${SRC_PATH}/mpfr
+
+# tar xvf ${SCRIPT_PATH}/isl-0.18.tar.bz2
+# mv isl-0.18 ${SRC_PATH}/isl
+
+BUILD_PATH=${BUILD_PATH}/build
 mkdir ${BUILD_PATH}
 cd ${BUILD_PATH}
 

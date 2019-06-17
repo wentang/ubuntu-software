@@ -20,17 +20,18 @@ function check_result {
 
 VER=3.14.5
 
-# decompress source
-SRC_PATH=${SCRIPT_PATH}/cmake-${VER}
-if [ -d ${SRC_PATH} ]; then
-    rm -r ${SRC_PATH}
-fi
-tar xvf cmake-${VER}.tar.gz
-
 # prepare build path
 if [ -d ${BUILD_PATH} ]; then
     rm -r ${BUILD_PATH}
 fi
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
+
+# decompress source
+SRC_PATH=${BUILD_PATH}/cmake-${VER}
+tar xvf ${SCRIPT_PATH}/cmake-${VER}.tar.gz
+
+BUILD_PATH=${BUILD_PATH}/build
 mkdir ${BUILD_PATH}
 cd ${BUILD_PATH}
 

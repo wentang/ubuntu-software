@@ -20,13 +20,20 @@ function check_result {
 
 VER=2.22.0
 
-# decompress source
-SRC_PATH=${SCRIPT_PATH}/git-${VER}
-if [ -d ${SRC_PATH} ]; then
-    rm -r ${SRC_PATH}
+# prepare build path
+if [ -d ${BUILD_PATH} ]; then
+    rm -rf ${BUILD_PATH}
 fi
-tar xvf git-${VER}.tar.gz
-cd ${SRC_PATH}
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
+
+# decompress source
+SRC_PATH=${BUILD_PATH}/git-${VER}
+tar xvf ${SCRIPT_PATH}/git-${VER}.tar.gz
+
+BUILD_PATH=${BUILD_PATH}/build
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
 
 # bootstrap
 log "-- configure"

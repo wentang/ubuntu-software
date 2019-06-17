@@ -20,17 +20,18 @@ function check_result {
 
 VER=2.32
 
-# decompress source
-SRC_PATH=${SCRIPT_PATH}/binutils-${VER}
-if [ -d ${SRC_PATH} ]; then
-    rm -r ${SRC_PATH}
-fi
-tar xvf binutils-${VER}.tar.bz2
-
 # prepare build path
 if [ -d ${BUILD_PATH} ]; then
     rm -r ${BUILD_PATH}
 fi
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
+
+# decompress source
+SRC_PATH=${BUILD_PATH}/binutils-${VER}
+tar xvf ${SCRIPT_PATH}/binutils-${VER}.tar.bz2
+
+BUILD_PATH=${BUILD_PATH}/build
 mkdir ${BUILD_PATH}
 cd ${BUILD_PATH}
 

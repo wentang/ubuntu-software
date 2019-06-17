@@ -20,26 +20,27 @@ function check_result {
 
 VER=8.0.0
 
-# decompress source
-SRC_PATH=${SCRIPT_PATH}/llvm-${VER}.src
-if [ -d ${SRC_PATH} ]; then
-    rm -r ${SRC_PATH}
-fi
-tar xvf llvm-${VER}.src.tar.xz
-
-tar xvf compiler-rt-${VER}.src.tar.xz
-mv compiler-rt-${VER}.src ${SRC_PATH}/tools/compiler-rt
-
-tar xvf cfe-${VER}.src.tar.xz
-mv cfe-${VER}.src ${SRC_PATH}/tools/clang
-
-tar xvf clang-tools-extra-${VER}.src.tar.xz
-mv clang-tools-extra-${VER}.src ${SRC_PATH}/tools/clang/tools/extra
-
 # prepare build path
 if [ -d ${BUILD_PATH} ]; then
     rm -r ${BUILD_PATH}
 fi
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
+
+# decompress source
+SRC_PATH=${BUILD_PATH}/llvm-${VER}.src
+tar xvf ${SCRIPT_PATH}/llvm-${VER}.src.tar.xz
+
+tar xvf ${SCRIPT_PATH}/cfe-${VER}.src.tar.xz
+mv cfe-${VER}.src ${SRC_PATH}/tools/clang
+
+tar xvf ${SCRIPT_PATH}/clang-tools-extra-${VER}.src.tar.xz
+mv clang-tools-extra-${VER}.src ${SRC_PATH}/tools/clang/tools/extra
+
+tar xvf ${SCRIPT_PATH}/compiler-rt-${VER}.src.tar.xz
+mv compiler-rt-${VER}.src ${SRC_PATH}/projects/compiler-rt
+
+BUILD_PATH=${BUILD_PATH}/build
 mkdir ${BUILD_PATH}
 cd ${BUILD_PATH}
 

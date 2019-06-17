@@ -20,17 +20,18 @@ function check_result {
 
 VER=3.7.3
 
-# decompress source
-SRC_PATH=${SCRIPT_PATH}/Python-${VER}
-if [ -d ${SRC_PATH} ]; then
-    rm -r ${SRC_PATH}
-fi
-tar xvf Python-${VER}.tar.xz
-
 # prepare build path
 if [ -d ${BUILD_PATH} ]; then
     rm -r ${BUILD_PATH}
 fi
+mkdir ${BUILD_PATH}
+cd ${BUILD_PATH}
+
+# decompress source
+SRC_PATH=${BUILD_PATH}/Python-${VER}
+tar xvf ${SCRIPT_PATH}/Python-${VER}.tar.xz
+
+BUILD_PATH=${BUILD_PATH}/build
 mkdir ${BUILD_PATH}
 cd ${BUILD_PATH}
 
