@@ -18,7 +18,7 @@ function check_result {
     fi
 }
 
-VER=8.0.0
+VER=9.0.0
 
 # prepare build path
 if [ -d ${BUILD_PATH} ]; then
