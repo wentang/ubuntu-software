@@ -78,7 +78,7 @@ sudo make install 2>>${LOG_FILE}
 result=$?
 check_result ${result} "-- install failed"
 
-libtool --finish /usr/local/gcc-last/libexec/gcc/x86_64-pc-linux-gnu/9.1.0
+libtool --finish /usr/local/gcc-last/libexec/gcc/x86_64-pc-linux-gnu/${VER}
 
 sudo ln -s /usr/local/gcc-last/bin/c++-last /usr/bin/c++-last
 sudo ln -s /usr/local/gcc-last/bin/cpp-last /usr/bin/cpp-last
@@ -91,7 +91,7 @@ sudo ln -s /usr/local/gcc-last/bin/gcov-last /usr/bin/gcov-last
 sudo ln -s /usr/local/gcc-last/bin/gcov-tool-last /usr/bin/gcov-tool-last
 sudo ln -s /usr/local/gcc-last/bin/g++-last /usr/bin/g++-last
 sudo ln -s /usr/local/gcc-last/bin/x86_64-pc-linux-gnu-c++-last /usr/bin/x86_64-pc-linux-gnu-c++-last
-sudo ln -s /usr/local/gcc-last/bin/x86_64-pc-linux-gnu-gcc-9.1.0 /usr/bin/x86_64-pc-linux-gnu-gcc-9.1.0
+sudo ln -s /usr/local/gcc-last/bin/x86_64-pc-linux-gnu-gcc-${VER} /usr/bin/x86_64-pc-linux-gnu-gcc-${VER}
 sudo ln -s /usr/local/gcc-last/bin/x86_64-pc-linux-gnu-gcc-ar-last /usr/bin/x86_64-pc-linux-gnu-gcc-ar-last
 sudo ln -s /usr/local/gcc-last/bin/x86_64-pc-linux-gnu-gcc-last /usr/bin/x86_64-pc-linux-gnu-gcc-last
 sudo ln -s /usr/local/gcc-last/bin/x86_64-pc-linux-gnu-gcc-nm-last /usr/bin/x86_64-pc-linux-gnu-gcc-nm-last
